@@ -13,7 +13,21 @@ var mock_heroes_1 = require('./mock-heroes');
 var HeroService = (function () {
     function HeroService() {
     }
-    HeroService.prototype.getHeroes = function () { return mock_heroes_1.HEROES; };
+    HeroService.prototype.getHeroes = function () {
+        return Promise.resolve(mock_heroes_1.HEROES);
+    };
+    HeroService.prototype.getHero = function (id) {
+        return this.getHeroes()
+            .then(function (heroes) { return heroes.filter(function (heroe) { return heroe.id === id; })[0]; });
+    };
+    // Only used for simulating slow server
+    HeroService.prototype.getHeroesSlowly = function () {
+        return new Promise(function (resolve) {
+            return setTimeout(function () { return resolve(mock_heroes_1.HEROES); }, 2000);
+        } // 2 seconds
+         // 2 seconds
+        );
+    };
     HeroService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])
