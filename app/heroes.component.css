@@ -45,3 +45,19 @@
       margin-right: .8em;
       border-radius: 4px 0 0 4px;
     }
+    button {
+      background-color: #eee;
+      border-radius: 4px;
+      display: inline-block;
+      text-decoration: none;
+    }
+    .delete-button {
+      float: right;
+      background-color: #607d8b;
+      color:white;  
+      margin-right: 4px;
+      cursor: pointer; 
+    }
+    .delete-button:hover {
+      opacity: 0.75;
+    }
